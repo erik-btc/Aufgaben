@@ -7,13 +7,13 @@ public class FibonacciZahlen {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte geben Sie eine Zahl ein: ");
         int zahl = scanner.nextInt();
-        int fibZahl = 0;
-        int extraZahl = 1;
-        System.out.println("Fibonacci-Zahlen bis " + zahl);
-        while (fibZahl < zahl){
-            System.out.print(fibZahl + " ");
-            fibZahl += extraZahl;
-            extraZahl = fibZahl;
+        int a = 0;
+        int b = 1;
+        while (a <= zahl) {
+            System.out.print(a + " ");
+            int c = a + b;
+            a = b;
+            b = c;
         }
     }
 }
