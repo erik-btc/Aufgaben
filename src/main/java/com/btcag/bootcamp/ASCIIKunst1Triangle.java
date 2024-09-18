@@ -10,11 +10,11 @@ public class ASCIIKunst1Triangle {
         int i = 0;
         while (i < zahl) {
             int j = 0;
-            while (j < zahl) {
+            while (j <= i) {
                 System.out.print("*");
                 j++;
             }
-            System.out.println();
+            System.out.println("");
             i++;
         }
     }

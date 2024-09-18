@@ -7,6 +7,15 @@ public class ASCIIKunst2 {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte geben Sie eine positive Ganzzahl ein: ");
         int zahl = scanner.nextInt();
-
+        int i = 0;
+        while (i < zahl) {
+            int j = 0;
+            while (j <= i) {
+                System.out.print("*");
+                j++;
+            }
+            System.out.println("");
+            i++;
+        }
     }
 }
