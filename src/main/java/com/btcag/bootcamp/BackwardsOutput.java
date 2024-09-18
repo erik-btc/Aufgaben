@@ -7,6 +7,7 @@ public class BackwardsOutput {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte geben Sie eine ganze Zahl ein: ");
         String input = scanner.nextLine();
+        String result = "";
         System.out.println(input);
     }
 }
