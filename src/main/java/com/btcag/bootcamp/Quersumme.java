@@ -8,6 +8,5 @@ public class Quersumme {
         System.out.println("Bitte geben Sie eine positive Ganzzahl ein: ");
         long ganzzahl = scanner.nextLong();
 
-
     }
 }
