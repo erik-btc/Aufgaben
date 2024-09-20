@@ -17,6 +17,6 @@ public class UnknownProgram {
                 result += 1;
             }
         }
-        System.out.println("Result: " + result);
+        System.out.println("Result: " + result); // Ich habe das Programm erst verstanden und dann es abgeschrieben um zu überprüfen ob ich es verstanden habe...
     }
 }
