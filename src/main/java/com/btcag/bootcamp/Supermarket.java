@@ -90,6 +90,6 @@ public class Supermarket {
             geldZurueckInCent = geldZurueckInCent - 1;
         }
 
-        System.out.println("Zweihunderter: "+ zweihunderter + "\nHunderter: " + hunderter + "\nFünfziger: " + fuenfziger + "\nZwanziger: " + zwanziger + "\nZehner: " + zehner + "\nFünfer: " + fuenfer + "\nZweier: " + zweier + "\nEiner: " + einer + "\nFünfzig Cent: " + fuenfzigCent + "\nZwanzig Cent: " + zwanzigCent + "\nZehn Cent: " + zehnCent + "\nFünf Cent: " + fuenfCent + "\nZwei Cent: " + zweiCent + "\nEin Cent: " + einer);
+        System.out.println("Zweihunderter: "+ zweihunderter + "\nHunderter: " + hunderter + "\nFünfziger: " + fuenfziger + "\nZwanziger: " + zwanziger + "\nZehner: " + zehner + "\nFünfer: " + fuenfer + "\nZweier: " + zweier + "\nEiner: " + einer + "\nFünfzig Cent: " + fuenfzigCent + "\nZwanzig Cent: " + zwanzigCent + "\nZehn Cent: " + zehnCent + "\nFünf Cent: " + fuenfCent + "\nZwei Cent: " + zweiCent + "\nEin Cent: " + einCent);
     }
 }
