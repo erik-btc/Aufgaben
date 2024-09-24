@@ -10,15 +10,25 @@ public class Subnetting {
         System.out.println("Bitte gebe das zweite Oktett der IP Adresse an: ");
         long zweitesOktett = scanner.nextLong();
         System.out.println("Bitte gebe das dritte Oktett der IP Adresse an: ");
-        long dritteOktett = scanner.nextLong();
+        long drittesOktett = scanner.nextLong();
         System.out.println("Bitte gebe das vierte Oktett der IP Adresse an: ");
         long viertesOktett = scanner.nextLong();
         System.out.println("Bitte gebe die Subnetzmaske an: ");
-        long subnetzmask = scanner.nextLong();
+        long subnetzBits = scanner.nextLong();
 
+        //berechnung anzahl hostbits
+        long hostBits = 32 - subnetzBits;
 
+        //netzadresse berechnen
+        long viertesOktettNetzadresse = (viertesOktett >> hostBits) << hostBits;
 
-        System.out.println("Die Netzadresse ist: " + erstesOktett + "." + zweitesOktett + "." + dritteOktett + "." + viertesOktett);
-        System.out.println("Die Broadcastadresse ist: " + erstesOktett + "." + zweitesOktett + "." + dritteOktett + "." + viertesOktett);
+        //broadcastadresse berechnen
+        long viertesOktettBroadcast = viertesOktettNetzadresse + (1L << hostBits) - 1;
+
+        //ausgabe netzadresse
+        System.out.println("Die Netzadresse ist: " + erstesOktett + "." + zweitesOktett + "." + drittesOktett + "." + viertesOktettNetzadresse);
+
+        //ausgabe broadcastadresse
+        System.out.println("Die Broadcastadresse ist: " + erstesOktett + "." + zweitesOktett + "." + drittesOktett + "." + viertesOktettBroadcast);
     }
 }
