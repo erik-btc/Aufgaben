@@ -1,4 +1,4 @@
-package com.btcag.bootcamp;
+package com.btcag.bootcamp.Aufgaben_Woche_1;
 
 public class W01ArithmetischeOperationen {
     public static void main(String[] args) {
