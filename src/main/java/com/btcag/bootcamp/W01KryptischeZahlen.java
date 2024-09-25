@@ -2,7 +2,7 @@ package com.btcag.bootcamp;
 
 import java.util.Scanner;
 
-public class KryptischeZahlen {
+public class W01KryptischeZahlen {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte die Zahl eingeben: ");

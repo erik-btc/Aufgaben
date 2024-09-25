@@ -2,7 +2,7 @@ package com.btcag.bootcamp;
 
 import java.util.Scanner;
 
-public class Primzahl {
+public class W01Primzahl {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte Zahl für den Primzahltest eingeben (Long): ");

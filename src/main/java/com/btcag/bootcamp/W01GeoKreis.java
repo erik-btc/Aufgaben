@@ -2,7 +2,7 @@ package com.btcag.bootcamp;
 
 import java.util.Scanner;
 
-public class GeoKreis {
+public class W01GeoKreis {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         double pi = 3.14;

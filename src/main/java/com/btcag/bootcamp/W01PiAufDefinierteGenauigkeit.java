@@ -2,7 +2,7 @@ package com.btcag.bootcamp;
 
 import java.util.Scanner;
 
-public class PiAufDefinierteGenauigkeit {
+public class W01PiAufDefinierteGenauigkeit {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte geben Sie die Anzahl der Iterationen ein: ");

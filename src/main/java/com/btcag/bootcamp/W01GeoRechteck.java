@@ -2,7 +2,7 @@ package com.btcag.bootcamp;
 
 import java.util.Scanner;
 
-public class GeoRechteck {
+public class W01GeoRechteck {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte geben Sie eine ganze positive Zahl ein: ");

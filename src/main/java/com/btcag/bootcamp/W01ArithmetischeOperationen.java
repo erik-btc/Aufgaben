@@ -1,6 +1,6 @@
 package com.btcag.bootcamp;
 
-public class ArithmetischeOperationen {
+public class W01ArithmetischeOperationen {
     public static void main(String[] args) {
         long var = 5;
         System.out.println(++var); // increment bevor ausführung

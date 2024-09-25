@@ -2,7 +2,7 @@ package com.btcag.bootcamp;
 
 import java.util.Scanner;
 
-public class ASCIIKunst1Square {
+public class W01ASCIIKunst1Triangle {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte geben Sie eine positive Ganzzahl ein: ");
@@ -10,11 +10,11 @@ public class ASCIIKunst1Square {
         int i = 0;
         while (i < zahl) {
             int j = 0;
-            while (j < zahl) {
+            while (j <= i) {
                 System.out.print("*");
                 j++;
             }
-            System.out.println();
+            System.out.println("");
             i++;
         }
     }

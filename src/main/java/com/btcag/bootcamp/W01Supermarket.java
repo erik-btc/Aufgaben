@@ -2,7 +2,7 @@ package com.btcag.bootcamp;
 
 import java.util.Scanner;
 
-public class Supermarket {
+public class W01Supermarket {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte alle Produkte in Cent eingeben und mit 0 die Liste beenden: ");

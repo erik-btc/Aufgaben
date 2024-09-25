@@ -1,6 +1,6 @@
 package com.btcag.bootcamp;
 import java.util.Scanner;
-public class AllesGross {
+public class W01AllesGross {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
