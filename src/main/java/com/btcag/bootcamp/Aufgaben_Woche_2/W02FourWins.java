@@ -8,11 +8,9 @@ public class W02FourWins {
     public static Scanner scanner = new Scanner(System.in);
     public static String username1;
     public static String username2;
-    public static boolean playersTurnStatus = true;// true for player 1 and false for player 2
-    public static int turnCounter = 0;
+    public static boolean playersTurnStatus = true; // true for player 1 and false for player 2
 
     public static String[] PlayerRegister() {
-
         String username1;
         String username2;
         boolean isValid = false;
@@ -34,102 +32,133 @@ public class W02FourWins {
         return new String[]{username1, username2};
     }
 
-
-
+    public static void initializeField() {
+        for (int row = 0; row < 6; row++) {
+            for (int col = 0; col < 7; col++) {
+                field[row][col] = " ";
+            }
+        }
+    }
 
     public static void DrawField() {
-        int rowCount = 0;
         int maxRow = 6;
         int maxColumn = 7;
-        while (rowCount < maxRow) {
-            int columnCount = 0;
-            while (columnCount < maxColumn) {
-                if (field[rowCount][columnCount] == "X") {
-                    System.out.print("[X]");
-                } else if (field[rowCount][columnCount] == "0") {
-                    System.out.print("[0]");
-                } else {
-                    System.out.print("[ ]");
-                }
-                columnCount++;
+        for (int row = 0; row < maxRow; row++) {
+            for (int col = 0; col < maxColumn; col++) {
+                System.out.print("[" + field[row][col] + "]");
             }
             System.out.println();
-            rowCount++;
         }
-        PlayersTurn();
     }
 
-
-    public static void PlayersTurn(){
+    public static void PlayersTurn() {
         int symbolColumn;
-
         int rowNumber = -1;
+
         if (playersTurnStatus) {
-            boolean columnFree;
-            do {
-                do{
-                    System.out.println("In welche Reihe möchtest du dein Zeichen machen " + username1 + "?");
-                    symbolColumn = scanner.nextInt();
-                    columnFree = true;
-
-                }while(symbolColumn < 1 || symbolColumn > 7);
-
-                for (int i = 0; i < 6; i++){
-                    if (field[i][(symbolColumn - 1)] != "X" && field[i][(symbolColumn - 1)] != "0") {
-                        rowNumber = i;
-                    }
-                }
-                if (rowNumber < 0){
-                    columnFree = false;
-                }
-            }while(!columnFree);
-            field[rowNumber][symbolColumn - 1] = "X";
+            System.out.println("In welche Spalte möchtest du dein Zeichen setzen, " + username1 + "?");
+        } else {
+            System.out.println("In welche Spalte möchtest du dein Zeichen setzen, " + username2 + "?");
         }
-        else {
-            boolean columnFree;
-            do{
-                do{
-                    System.out.println("In welche Reihe möchtest du dein Zeichen machen " + username2 + "?");
-                    symbolColumn = scanner.nextInt();
-                    columnFree = true;
-                }while(symbolColumn < 1 || symbolColumn > 7);
-                for (int i = 0; i < 6; i++){
-                    if (field[i][(symbolColumn - 1)] != "X" && field[i][(symbolColumn - 1)] != "0") {
-                        rowNumber = i;
-                    }
+
+        while (true) {
+            symbolColumn = scanner.nextInt();
+
+            if (symbolColumn < 1 || symbolColumn > 7) {
+                System.out.println("Ungültige Spalte. Bitte eine Zahl zwischen 1 und 7 eingeben.");
+                continue;
+            }
+
+            symbolColumn -= 1;
+
+            rowNumber = -1;
+            for (int row = 5; row >= 0; row--) {
+                if (field[row][symbolColumn].equals(" ")) {
+                    rowNumber = row;
+                    break;
                 }
-                if (rowNumber < 0){
-                    columnFree = false;
-                }
-            }while(!columnFree);
-        field[rowNumber][symbolColumn - 1] = "0";
+            }
+
+            if (rowNumber == -1) {
+                System.out.println("Diese Spalte ist voll. Bitte eine andere Spalte wählen.");
+            } else {
+                break;
+            }
         }
+
+        if (playersTurnStatus) {
+            field[rowNumber][symbolColumn] = "X";
+        } else {
+            field[rowNumber][symbolColumn] = "0";
+        }
+
+        if (checkWin()) {
+            DrawField();
+            System.out.println((playersTurnStatus ? username1 : username2) + " hat gewonnen!");
+            System.exit(0);
+        }
+
         playersTurnStatus = !playersTurnStatus;
-        DrawField();
     }
 
+    public static boolean checkWin() {
+        // Horizontal überprüfen
+        for (int row = 0; row < 6; row++) {
+            for (int col = 0; col <= 3; col++) {
+                String chip = field[row][col];
+                if (!chip.equals(" ") && chip.equals(field[row][col + 1]) && chip.equals(field[row][col + 2]) && chip.equals(field[row][col + 3])) {
+                    return true;
+                }
+            }
+        }
 
+        // Vertikal überprüfen
+        for (int col = 0; col < 7; col++) {
+            for (int row = 0; row <= 2; row++) {
+                String chip = field[row][col];
+                if (!chip.equals(" ") && chip.equals(field[row + 1][col]) && chip.equals(field[row + 2][col]) && chip.equals(field[row + 3][col])) {
+                    return true;
+                }
+            }
+        }
 
+        // Diagonale (von links oben nach rechts unten) überprüfen
+        for (int row = 0; row <= 2; row++) {
+            for (int col = 0; col <= 3; col++) {
+                String chip = field[row][col];
+                if (!chip.equals(" ") && chip.equals(field[row + 1][col + 1]) && chip.equals(field[row + 2][col + 2]) && chip.equals(field[row + 3][col + 3])) {
+                    return true;
+                }
+            }
+        }
+
+        // Diagonale (von rechts oben nach links unten) überprüfen
+        for (int row = 0; row <= 2; row++) {
+            for (int col = 3; col < 7; col++) {
+                String chip = field[row][col];
+                if (!chip.equals(" ") && chip.equals(field[row + 1][col - 1]) && chip.equals(field[row + 2][col - 2]) && chip.equals(field[row + 3][col - 3])) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 
     public static void main(String[] args) {
-        System.out.println("Willkommen bei \n");
-        System.out.println("""
-                 __      ___              _____               _             _  \s
-                 \\ \\    / (_)            / ____|             (_)           | | \s
-                  \\ \\  / / _  ___ _ __  | |  __  _____      ___ _ __  _ __ | |_\s
-                   \\ \\/ / | |/ _ \\ '__| | | |_ |/ _ \\ \\ /\\ / / | '_ \\| '_ \\| __|
-                    \\  /  | |  __/ |    | |__| |  __/\\ V  V /| | | | | | | | |_\s
-                     \\/   |_|\\___|_|     \\_____|\\___| \\_/\\_/ |_|_| |_|_| |_|\\__|
-                                                                               \s
-                                                                               \
-                """);
+        System.out.println("Willkommen bei Vier Gewinnt!");
         String[] spieler = PlayerRegister();
         username1 = spieler[0];
         username2 = spieler[1];
         System.out.println("Spieler 1: " + username1);
         System.out.println("Spieler 2: " + username2);
+
+        initializeField();
         System.out.println("Hier ist das Spielfeld:\n");
-        DrawField();
-        PlayersTurn();
+
+        while (true) {
+            DrawField();
+            PlayersTurn();
+        }
     }
 }
