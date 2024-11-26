@@ -1,9 +1,9 @@
-package com.btcag.bootcamp.Aufgaben_Woche_3.practice;
+package com.btcag.bootcamp.Aufgaben_Woche_3.practice.sandwich;
 
 public class Betriebsstoffe {
-    private int stromVerbrauch;
-    private int wasserVerbrauch;
-    private int gasVerbrauch;
+    private final int stromVerbrauch;
+    private final int wasserVerbrauch;
+    private final int gasVerbrauch;
 
     public Betriebsstoffe() {
         this.stromVerbrauch = 3;

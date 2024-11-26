@@ -1,4 +1,4 @@
-package com.btcag.bootcamp.Aufgaben_Woche_3.practice;
+package com.btcag.bootcamp.Aufgaben_Woche_3.practice.sandwich;
 
 import java.util.Scanner;
 
