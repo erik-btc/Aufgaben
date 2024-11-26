@@ -2,89 +2,83 @@ package com.btcag.bootcamp.Aufgaben_Woche_3.PQueueList;
 
 public class PQueueList implements PQueueListInterface {
 
-    int maxLength = 5;
-    int[] list = new int[maxLength];
+    private int size;
+    private int[] array;
 
+    public PQueueList(){
+        this.size = 0;
+        array = new int[5];
+    }
 
-    public int[] doubleArray(int[] list) {
-        int[] temp = new int[list.length * 2];
-        System.arraycopy(list, 0, temp, 0, list.length);
-        return temp;
+    @Override
+    public String toString() {
+        String s = "[";
+        for (int i = 0; i < size; i++){
+            s += array[i];
+            if (i < size-1){
+                s += ", ";
+            }
+        }
+        s += "]";
+        return s;
     }
 
 
+    private void chooseArrayRightSize(){
+        if (size + 1 == array.length){
+            int[] tempArray = new int[size*2];
+            for (int i = 0; i < array.length; i++){
+                tempArray[i] = array[i];
+            }
+            this.array = tempArray;
+        }
+    }
+
     @Override
     public int popFront() {
-        int temp = list[0];
-        for (int i = 0; i < list.length - 1; i++) {
-            list[i] = list[i + 1];
+        if (size < 1){
+            return -1;
         }
+        int temp = array[0];
+        for (int i = 1; i < this.size; i++){
+            array[i - 1] = array[i];
+        }
+        size--;
         return temp;
     }
 
     @Override
     public int popLast() {
-        int temp = 0;
-        for (int i = list.length - 1; i >= 0; i--) {
-            if(list[i] != 0){
-                temp = list[i];
-                list[i] = 0;
-                break;
-            }
+        if (size < 1){
+            return -1;
         }
-
-        return temp;
+        return array[--size];
     }
 
     @Override
     public int pushLast(int i) {
-        if (list[list.length - 1] != 0) {
-            list = doubleArray(list);
-        }
-        int temp = -1;
-        for (int j = list.length - 1; j >= 0; j--) {
-            if(list[j] != 0){
-                list[j + 1] = i;
-                temp = list[j + 1];
-                break;
-            }
-        }
-        if(list[0] == 0){
-            list[0] = i;
-            temp = list[0];
-        }
-
-        return temp;
+        chooseArrayRightSize();
+        array[size] = i;
+        return size++;
     }
 
     @Override
     public int pushFront(int i) {
-        if(list[list.length - 1] != 0){
-            list = doubleArray(list);
+        chooseArrayRightSize();
+        for (int j = size; j > 0; j-- ){
+            array[j] = array[j - 1];
         }
-
-        int temp = -1;
-
-        if (list[0] != 0) {
-            for (int j = list.length - 2; j >= 0; j--) {
-                list[j + 1] = list[j];
-            }
-        }
-        list[0] = i;
-        if(list[0] != 0){
-            temp = list[0];
-        }
-        return temp;
-
+        array[0] = i;
+        size++;
+        return 0;
     }
+
 
     @Override
     public int get(int i) {
-        return list[i];
-    }
-    public void getList(){
-        for (int i: list){
-            System.out.print(i + " ");
+        if (i >= size){
+            return -1;
         }
+        return array[i];
     }
 }

@@ -1,62 +1,53 @@
 package com.btcag.bootcamp.Aufgaben_Woche_3.PQueueList;
 
 
+import com.btcag.bootcamp.Aufgaben_Woche_3.QueueList.QueueList;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        PQueueList list = new PQueueList();
         Scanner scanner = new Scanner(System.in);
-        int input = 0;
+        QueueList list = new QueueList();
 
-        while(input != 6){
-            System.out.println("""
-                \nWas möchtest du machen ?
-                (1) Das erste Element zurückgeben und löscht es danach.
-                (2) Das letzte Element zurückgeben und löscht es danach.
-                (3) Zahl eingeben und am Ende hinzufügen.
-                (4) Zahl eingeben und am Anfang hinzufügen.
-                (5) Zahl eingeben und das Objekt zurück bekommen, aber nicht löschen.
-                (6) Programm beenden.
-                """);
+        int userInput;
+        do {
 
-            input = scanner.nextInt();
-            int userInput;
+            System.out.println(
+                    """
+                    (1) gibt das erste Element zurück und löscht dieses von den Daten
+                    (2) gibt das letzte Element zurück und entfernt dieses von den Daten
+                    (3) fügt dieses Element den Daten am Anfang hinzu
+                    (4) fügt dieses Element den Daten am Ende hinzu
+                    (5) gibt an Stelle i das Element zurück, entfernt es aber nicht
+                    (6) Beende das Programm \n""");
 
-            if (input == 1) {
-                System.out.println("Das Element " + list.popFront() + " wurde gelöscht");
-                list.getList();
-            }
-            else if (input == 2) {
-                System.out.println("Das Element " + list.popLast() + " wurde gelöscht");
-                list.getList();
-            }
-            else if (input == 3) {
-                System.out.println("Was möchtest du hinzufügen?");
-                userInput = scanner.nextInt();
-                System.out.println("Das Objekt " + list.pushLast(userInput) + " wurde der Warteschlange am Ende hinzugefügt!");
-                list.getList();
-            }
-            else if (input == 4) {
-                System.out.println("Was möchtest du hinzufügen?");
-                userInput = scanner.nextInt();
-                System.out.println("Das Objekt " + list.pushFront(userInput) + " wurde der Warteschlange am Anfang hinzugefügt!");
-                list.getList();
-            }
-            else if (input == 5) {
 
-                System.out.println("Welches Element willst du auslesen?");
-                userInput = scanner.nextInt();
-                System.out.println("Das " + userInput + " Element der Queue ist " + list.get(userInput));
-                list.getList();
-            }
-            else if (input == 6) {
-                System.out.println("Programm wird beendet.");
-            }
-            else {
-                System.out.println("Ungültige Zahl.");
-            }
-        }
+            System.out.println("So sieht das aktuelle Array aus: " + list);
 
+            userInput = scanner.nextInt();
+
+            if (userInput == 1) {
+                list.popFront();
+                System.out.println("Das Element 1 wurde entfernt");
+            } else if (userInput == 2) {
+                list.popLast();
+                System.out.println("Das Element 5 wurde entfernt");
+            } else if (userInput == 3) {
+                int number = scanner.nextInt();
+                list.pushFront(number);
+                System.out.println("Das Element " + number + "wurde hinzugefügt");
+            } else if (userInput == 4) {
+                int number = scanner.nextInt();
+                list.pushLast(number);
+                System.out.println("Das Element " + number + "wurde hinzugefügt");
+            } else if (userInput == 5) {
+                System.out.println("Welche stelle möchtest du sehen?");
+                int number = scanner.nextInt();
+                list.get(number);
+            }
+
+            System.out.println("So sieht das neue Array aus: " + list);
+        } while (userInput != 6);
     }
 }

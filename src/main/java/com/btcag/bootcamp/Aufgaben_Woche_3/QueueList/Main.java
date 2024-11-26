@@ -10,7 +10,6 @@ public class Main {
         int userInput;
         do {
 
-
             System.out.println(
                     """
                     (1) gibt das erste Element zurück und löscht dieses von den Daten
@@ -21,14 +20,9 @@ public class Main {
                     (6) Beende das Programm \n""");
 
 
-            
-
-
             System.out.println("So sieht das aktuelle Array aus: " + list);
 
-
             userInput = scanner.nextInt();
-
 
             if (userInput == 1) {
                 list.popFront();
