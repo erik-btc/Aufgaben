@@ -9,7 +9,8 @@ class User {
         this.messageService = messageService;
     }
 
-    public void sendMessage(String message) {
+    public short sendMessage(String message) {
         System.out.println(name + ": " + messageService.sendMessage(message));
+        return 0;
     }
 }

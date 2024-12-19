@@ -7,5 +7,8 @@ public class Main {
 
         User user2 = new User("Bob", new AdvancedMessageService());
         user2.sendMessage("Hello from Bob! I'm using AdvancedMessageService.");
+
+        User user3 = new User("Carl", new SMSMessageService());
+        user3.sendMessage("Hello from Carl! I'm using SMSService.");
     }
 }

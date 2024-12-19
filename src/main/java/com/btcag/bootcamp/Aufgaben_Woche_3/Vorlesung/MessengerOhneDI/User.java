@@ -9,11 +9,11 @@ class User {
         this.name = name;
     }
 
-    public void sendMessage(String message, boolean useAdvanced) {
+    public String sendMessage(String message, boolean useAdvanced) {
         if (useAdvanced) {
-            System.out.println(name + ": " + advancedMessageService.sendMessage(message));
+            return name + ": " + advancedMessageService.sendMessage(message);
         } else {
-            System.out.println(name + ": " + basicMessageService.sendMessage(message));
+            return name + ": " + basicMessageService.sendMessage(message);
         }
     }
 }
